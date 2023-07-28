@@ -1,0 +1,26 @@
+# dependencies
+node_modules
+
+# testing
+coverage
+storybook-static/
+
+# compiled files
+/build
+
+# misc
+.DS_Store
+
+# logs
+logs
+*.log
+yarn-debug.log*
+yarn-error.log*
+
+# cache
+.eslintcache
+
+#envfiles
+.env
+.env.local
+.env.development
