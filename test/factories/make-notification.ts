@@ -12,9 +12,9 @@ export function makeNotification(
 ) {
   const notification = Notification.create(
     {
-      title: faker.lorem.sentence(),
       recipientId: new UniqueEntityID('recipient-id'),
-      content: faker.lorem.text(),
+      title: faker.lorem.sentence(4),
+      content: faker.lorem.sentence(10),
       ...override,
     },
     id,
