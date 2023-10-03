@@ -4,7 +4,7 @@ import request from 'supertest'
 import { hash } from 'bcryptjs'
 
 import { AppModule } from '@/infra/app.module'
-import { PrismaService } from '@/infra/prisma/prisma.service'
+import { PrismaService } from '@/infra/database/prisma/prisma.service'
 import { JwtService } from '@nestjs/jwt'
 
 describe('Create Question (E2E)', () => {
