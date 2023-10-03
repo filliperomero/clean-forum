@@ -2,13 +2,13 @@ import { AggregateRoot } from '../entities/aggregate-root'
 import { UniqueEntityID } from '../entities/unique-entity-id'
 import { DomainEvent } from './domain-event'
 
-type DomainEventCallback = (event: any) => void
+type DomainEventCallback = (event: unknown) => void
 
 export class DomainEvents {
   private static handlersMap: Record<string, DomainEventCallback[]> = {} // Key: name of the event, DomainEventCallback -> List of subscribers
-  private static markedAggregates: AggregateRoot<any>[] = [] // This will mark which AggregateRoot has pending Events. So we'll fill with aggregateRoots that are not ready yet
+  private static markedAggregates: AggregateRoot<unknown>[] = [] // This will mark which AggregateRoot has pending Events. So we'll fill with aggregateRoots that are not ready yet
 
-  public static markAggregateForDispatch(aggregate: AggregateRoot<any>) {
+  public static markAggregateForDispatch(aggregate: AggregateRoot<unknown>) {
     const aggregateFound = !!this.findMarkedAggregateByID(aggregate.id)
 
     if (!aggregateFound) {
@@ -16,12 +16,12 @@ export class DomainEvents {
     }
   }
 
-  private static dispatchAggregateEvents(aggregate: AggregateRoot<any>) {
+  private static dispatchAggregateEvents(aggregate: AggregateRoot<unknown>) {
     aggregate.domainEvents.forEach((event: DomainEvent) => this.dispatch(event))
   }
 
   private static removeAggregateFromMarkedDispatchList(
-    aggregate: AggregateRoot<any>,
+    aggregate: AggregateRoot<unknown>,
   ) {
     const index = this.markedAggregates.findIndex((a) => a.equals(aggregate))
 
@@ -30,7 +30,7 @@ export class DomainEvents {
 
   private static findMarkedAggregateByID(
     id: UniqueEntityID,
-  ): AggregateRoot<any> | undefined {
+  ): AggregateRoot<unknown> | undefined {
     return this.markedAggregates.find((aggregate) => aggregate.id.equals(id))
   }
 
