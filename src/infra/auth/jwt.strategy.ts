@@ -4,7 +4,7 @@ import { ExtractJwt, Strategy } from 'passport-jwt'
 import { z } from 'zod'
 import { Injectable } from '@nestjs/common'
 
-import { Env } from '@/env'
+import { Env } from '@/infra/env'
 
 const tokenPayloadSchema = z.object({
   sub: z.string().uuid(),
