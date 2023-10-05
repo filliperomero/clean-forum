@@ -32,7 +32,7 @@ export class RegisterStudentUseCase {
       await this.studentsRepository.findByEmail(email)
 
     if (studentWithSameEmail) {
-      left(new StudentAlreadyExistsError(email))
+      return left(new StudentAlreadyExistsError(email))
     }
 
     const hashedPassword = await this.hashGenerator.hash(password)
