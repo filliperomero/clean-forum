@@ -1,4 +1,4 @@
-version: '3.8'
+version: "3.8"
 
 # image postgres should only be used for dev. For prod, we should use bitnami images
 # volumes -> This will allow us to persist a folder in our local machine so if this container "dies", we can keep the data of this container
